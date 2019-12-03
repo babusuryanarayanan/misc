@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: >
+  brilliant-academe-app
+
+  Sample SAM Template for sam-app
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+cloud:
+        aws:
+        region:
+            static: us-east-1
+Resources:
+  balambdahandlers:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+      CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+      Handler: com.brilliant.academe.handlers.GetCourseHandler::handleRequest
+      Runtime: java8
+      MemorySize: 512
+
+  GetCartHandler:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.GetCartHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+  GetEnrolledCourse:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.GetEnrolledCourseHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512        
+  GetCourseLecture:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.GetCourseLectureHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+  GetPreviewCourseVideo:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.GetPreviewCourseVideoHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+  LookupMasterData:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.LookupMasterHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+  OrderStatus:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.GetOrderHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+  EnrollCourse:
+      Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+      Properties:
+        Role : arn:aws:iam::332044333306:role/lambda-dynamodb-execution-role
+        CodeUri: ba-lambda-handlers/target/ba-lambda-handlers-1.0-SNAPSHOT.jar
+        Handler: com.brilliant.academe.handlers.EnrollCourseHandler::handleRequest
+        Runtime: java8
+        MemorySize: 512
+     
+
+      
+      
+      
+  
